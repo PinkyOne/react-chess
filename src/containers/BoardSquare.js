@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Square from './Square';
-import { canMoveKnight, moveKnight } from './Game';
+import Square from '../components/Square';
+import { canMoveKnight } from '../reducers/Game';
+import { moveKnight } from '../actions'
 import { ItemTypes } from './Constants';
 import { DropTarget } from 'react-dnd';
+import move from '../actions'
 
 const squareTarget = {
   canDrop(props) {
@@ -10,9 +12,23 @@ const squareTarget = {
   },
 
   drop(props) {
-    moveKnight(props.x, props.y);
+    dispatch(moveKnight(props.x, props.y));
   }
 };
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    active: ownProps.filter === state.visibilityFilter
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onClick: () => {
+      dispatch(setVisibilityFilter(ownProps.filter))
+    }
+  }
+}
 
 function collect(connect, monitor) {
   return {
@@ -66,4 +82,9 @@ BoardSquare.propTypes = {
   canDrop: PropTypes.bool.isRequired
 };
 
-export default DropTarget(ItemTypes.KNIGHT, squareTarget, collect)(BoardSquare);
+const BSquare = connect(
+  mapStateToProps,
+  mapDispatchToProps
+  )(DropTarget(ItemTypes.KNIGHT, squareTarget, collect)(BoardSquare));
+
+export default BSquare

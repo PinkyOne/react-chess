@@ -1,13 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Board from './Board';
-import { observe } from './Game';
+import React from 'react'
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './components/App'
+import reducer from './reducers'
 
 const rootEl = document.getElementById('root');
 
-observe(knightPosition =>
-  ReactDOM.render(
-    <Board knightPosition={knightPosition} />,
-    rootEl
-  )
-);
+const store = createStore(reducer)
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootEl
+)

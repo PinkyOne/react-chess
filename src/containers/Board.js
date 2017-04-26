@@ -29,12 +29,6 @@ class Board extends Component {
     }
   }
 
-  handleSquareClick(toX, toY) {
-     if (canMoveKnight(toX, toY)) {
-    moveKnight(toX, toY);
-  }
-  }
-
   render() {
     const squares = [];
     for (let i = 0; i < 64; i++) {
@@ -43,10 +37,12 @@ class Board extends Component {
 
     return (
       <div style={{
-        width: '500',
-        height: '500',
-        display: 'flex',
-        flexWrap: 'wrap'
+        width: '99%',
+        height: '98%',
+        display: 'inline-flex',
+        flexWrap: 'wrap',
+        'overflow-y': 'auto',
+        position: 'absolute'
       }}>
         {squares}
       </div>
