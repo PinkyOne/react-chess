@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { ItemTypes } from './Constants';
+import { ItemTypes } from '../Constants';
 import { DragSource } from 'react-dnd';
 
 const knightSource = {
