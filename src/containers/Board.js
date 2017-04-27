@@ -47,18 +47,18 @@ class Board extends Component {
 
     render() {
         const squares = [];
-        for (let i = 0; i < 64; i++) {
+        const size = 8 * 8;
+        for (let i = 0; i < size; i++) {
             squares.push(this.renderSquare(i));
         }
 
         return (
             <div style={{
-                width: '99%',
-                height: '98%',
-                display: 'inline-flex',
+                width: '88.88888%',
+                height: '100%',
+                display: 'flex',
                 flexWrap: 'wrap',
-                'overflow-y': 'auto',
-                position: 'absolute'
+                position: 'relative'
             }}>
                 {squares}
             </div>
