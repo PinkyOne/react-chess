@@ -1,8 +1,10 @@
 import {MOVE_KNIGHT} from '../Constants'
 
-export const moveKnight = (kx, ky) => {
+const moveKnight = (x, y) => {
     return {
         type: MOVE_KNIGHT,
-        position: {kx, ky}
+        position: {x, y}
     }
 };
+
+export default moveKnight;

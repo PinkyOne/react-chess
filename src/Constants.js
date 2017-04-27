@@ -1,5 +1,5 @@
 export const ItemTypes = {
-  KNIGHT: 'knight'
+    KNIGHT: 'knight'
 };
 
-export const MOVE_KNIGHT = 'MOVE_KNIGHT'
+export const MOVE_KNIGHT = 'MOVE_KNIGHT';

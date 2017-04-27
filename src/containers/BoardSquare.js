@@ -2,25 +2,18 @@ import React, {Component, PropTypes} from 'react';
 import {DropTarget} from 'react-dnd';
 import Square from '../components/Square';
 import {ItemTypes} from '../Constants';
-import moveKnight from '../actions'
 
 const squareTarget = {
     canDrop(props) {
-        const {canMoveKnight, position: {x, y}} = props
+        const {canMoveKnight, x, y} = props;
         return canMoveKnight(x, y);
     },
 
     drop(props) {
-        const {moveKnight, position: {x, y}} = props
+        const {moveKnight, x, y} = props;
         moveKnight(x, y);
     }
 };
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        active: ownProps.filter === state.visibilityFilter
-    }
-}
 
 function collect(connect, monitor) {
     return {

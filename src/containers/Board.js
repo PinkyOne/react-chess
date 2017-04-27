@@ -8,12 +8,17 @@ import {connect} from "react-redux";
 
 class Board extends Component {
     canMoveKnight(toX, toY) {
-        const [x, y] = this.props.position;
+        const {x, y} = this.props.knightPosition;
         const dx = toX - x;
         const dy = toY - y;
 
         return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
             (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+    }
+
+    setKnightPosition(x, y) {
+        if (!this.canMoveKnight(x, y)) return false;
+        this.props.moveKnight(x, y);
     }
 
     renderSquare(i) {
@@ -23,8 +28,8 @@ class Board extends Component {
             <div key={i}
                  style={{width: '12.5%', height: '12.5%'}}>
                 <BoardSquare
-                    canMoveKnight={this.canMoveKnight}
-                    moveKnight={this.moveKnight}
+                    canMoveKnight={this.canMoveKnight.bind(this)}
+                    moveKnight={this.setKnightPosition.bind(this)}
                     x={x}
                     y={y}>
                     {this.renderPiece(x, y)}
@@ -33,9 +38,9 @@ class Board extends Component {
         );
     }
 
-    renderPiece(x, y) {
-        const [knightX, knightY] = this.props.position;
-        if (x === knightX && y === knightY) {
+    renderPiece(kX, kY) {
+        const {x, y} = this.props.knightPosition;
+        if (x === kX && y === kY) {
             return <Knight />;
         }
     }
@@ -68,9 +73,6 @@ Board.propTypes = {
     moveKnight: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 
-Board = DragDropContext(HTML5Backend)(Board);
-Board = connect(mapStateToProps, {moveKnight})(Board);
-
-export default Board
+export default connect(mapStateToProps, {moveKnight})(DragDropContext(HTML5Backend)(Board));
