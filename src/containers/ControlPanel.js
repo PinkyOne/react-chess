@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import Button from "../components/Button";
 import PositionTextField from "../components/PositionTextField";
 import {moveKnight, changeText} from "../actions";
+import {LETTERS} from '../Constants'
 
 class ControlPanel extends Component {
     canMoveKnight(toX, toY) {
@@ -17,9 +18,11 @@ class ControlPanel extends Component {
 
     setKnightPosition() {
         const positionText = this.props.knightPosition.text;
-        if (!positionText)return;
-        const letters = 'ABCDEFGH';
-        const newY = letters.indexOf(positionText[0]);
+        if (!ControlPanel.checkPositionText(positionText)) {
+            alert('Wrong position');
+            return false;
+        }
+        const newY = LETTERS.indexOf(positionText[0].toUpperCase());
         const newX = parseInt(positionText[1], 10) - 1;
         if (!this.canMoveKnight(newX, newY)) {
             const {x, y} = this.props.knightPosition;
@@ -28,6 +31,12 @@ class ControlPanel extends Component {
             return false;
         }
         this.props.moveKnight(newX, newY);
+    }
+
+    static checkPositionText(positionText) {
+        const y = LETTERS.indexOf(positionText[0].toUpperCase());
+        const x = parseInt(positionText[1], 10) - 1;
+        return y > 0 && x > 0 && x <= 8;
     }
 
     onChangeTextField(event) {

@@ -1,9 +1,8 @@
-import {CHANGE_TEXT, MOVE_KNIGHT} from '../Constants'
+import {CHANGE_TEXT, MOVE_KNIGHT, LETTERS} from '../Constants'
 
 const getPositionText = (position) => {
     const {x, y} = position;
-    const letters = 'ABCDEFGH';
-    return letters[y] + (x + 1);
+    return LETTERS[y] + (x + 1);
 };
 
 export function knightPosition(state = {x: 1, y: 1, text: 'B2'}, action) {

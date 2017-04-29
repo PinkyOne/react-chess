@@ -1,5 +1,6 @@
 import React from 'react';
 import StripeSquare from "./StripeSquare";
+import {LETTERS} from "../Constants";
 
 function renderSquare(i) {
     let percents = 100 / 8;
@@ -17,9 +18,8 @@ function renderSquare(i) {
 export default function YStripe() {
     const size = 8;
     const stripe = [];
-    const letters = 'ABCDEFGH';
     for (let i = 0; i < size; i++) {
-        stripe.push(renderSquare(letters[i]));
+        stripe.push(renderSquare(LETTERS[i]));
     }
     return (
         <div style={{
