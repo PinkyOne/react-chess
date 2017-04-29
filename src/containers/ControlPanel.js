@@ -40,7 +40,6 @@ class ControlPanel extends Component {
     }
 }
 
-
 const mapStateToProps = state => state;
 
 ControlPanel.propTypes = {
