@@ -74,5 +74,5 @@ Board.propTypes = {
 };
 
 const mapStateToProps = state => state;
-
-export default connect(mapStateToProps, {moveKnight})(DragDropContext(HTML5Backend)(Board));
+const mapDispatchToProps = {moveKnight};
+export default connect(mapStateToProps, mapDispatchToProps)(DragDropContext(HTML5Backend)(Board));

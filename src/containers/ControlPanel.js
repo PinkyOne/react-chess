@@ -47,11 +47,12 @@ class ControlPanel extends Component {
     }
 }
 
-const mapStateToProps = state => state;
-
 ControlPanel.propTypes = {
     knightPosition: PropTypes.object.isRequired,
     moveKnight: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {moveKnight, changeText})(ControlPanel);
+const mapStateToProps = state => state;
+const mapDispatchToProps = {moveKnight, changeText};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
