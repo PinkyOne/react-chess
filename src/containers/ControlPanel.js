@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Button from "../components/Button";
-import PositionTextField from "./PositionTextField";
-import moveKnight from '../actions'
+import PositionTextField from "../components/PositionTextField";
+import {moveKnight, changeText} from "../actions";
 
 class ControlPanel extends Component {
     canMoveKnight(toX, toY) {
@@ -30,10 +30,15 @@ class ControlPanel extends Component {
         this.props.moveKnight(newX, newY);
     }
 
+    onChangeTextField(event) {
+        const value = event.target.value;
+        this.props.changeText(value);
+    }
+
     render() {
         return (
             <div>
-                <PositionTextField />
+                <PositionTextField onChange={this.onChangeTextField.bind(this)}/>
                 <Button handleChange={this.setKnightPosition.bind(this)}/>
             </div>
         );
@@ -47,4 +52,4 @@ ControlPanel.propTypes = {
     moveKnight: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, {moveKnight})(ControlPanel);
+export default connect(mapStateToProps, {moveKnight, changeText})(ControlPanel);
