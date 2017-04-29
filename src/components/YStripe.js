@@ -1,6 +1,6 @@
 import React from 'react';
 import StripeSquare from "./StripeSquare";
-import {LETTERS} from "../Constants";
+import {LETTERS} from "../constants/Strings";
 
 function renderSquare(i) {
     let percents = 100 / 8;

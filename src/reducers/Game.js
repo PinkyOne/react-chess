@@ -1,4 +1,5 @@
-import {CHANGE_TEXT, MOVE_KNIGHT, LETTERS} from '../Constants'
+import {CHANGE_TEXT, MOVE_KNIGHT} from '../constants/Actions'
+import {LETTERS} from '../constants/Strings'
 
 const getPositionText = (position) => {
     const {x, y} = position;

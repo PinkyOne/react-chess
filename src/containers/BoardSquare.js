@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import {DropTarget} from 'react-dnd';
 import Square from '../components/Square';
-import {ItemTypes} from '../Constants';
+import {ItemTypes} from '../constants/ItemTypes';
 
 const squareTarget = {
     canDrop(props) {
@@ -25,7 +25,7 @@ function collect(connect, monitor) {
 }
 
 class BoardSquare extends Component {
-    renderOverlay(color) {
+    static renderOverlay(color) {
         return (
             <div style={{
                 position: 'absolute',
@@ -53,9 +53,9 @@ class BoardSquare extends Component {
                 <Square black={black}>
                     {this.props.children}
                 </Square>
-                {isOver && !canDrop && this.renderOverlay('red')}
-                {!isOver && canDrop && this.renderOverlay('yellow')}
-                {isOver && canDrop && this.renderOverlay('green')}
+                {isOver && !canDrop && BoardSquare.renderOverlay('red')}
+                {!isOver && canDrop && BoardSquare.renderOverlay('yellow')}
+                {isOver && canDrop && BoardSquare.renderOverlay('green')}
             </div>
         );
     }

@@ -4,13 +4,13 @@ import {connect} from "react-redux";
 import Button from "../components/Button";
 import PositionTextField from "../components/PositionTextField";
 import {moveKnight, changeText} from "../actions";
-import {LETTERS} from '../Constants'
+import {LETTERS} from '../constants/Strings'
 
 class ControlPanel extends Component {
     static checkPositionText(positionText) {
         const y = LETTERS.indexOf(positionText[0].toUpperCase());
         const x = parseInt(positionText[1], 10) - 1;
-        return y > 0 && x > 0 && x <= 8;
+        return y >= 0 && x > 0 && x <= 8;
     }
 
     canMoveKnight(toX, toY) {
