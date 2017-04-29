@@ -1,10 +1,11 @@
 import React, {Component, PropTypes} from 'react';
-import BoardSquare from './BoardSquare';
-import Knight from './Knight';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import moveKnight from '../actions'
 import {connect} from "react-redux";
+
+import BoardSquare from './BoardSquare';
+import Knight from './Knight';
+import moveKnight from '../actions'
 
 class Board extends Component {
     canMoveKnight(toX, toY) {

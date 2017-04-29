@@ -1,9 +1,16 @@
-import {MOVE_KNIGHT} from '../Constants'
+import {MOVE_KNIGHT,CHANGE_TEXT} from '../Constants'
 
-const moveKnight = (x, y) => {
+export const moveKnight = (x, y) => {
     return {
         type: MOVE_KNIGHT,
         position: {x, y}
+    }
+};
+
+export const changeText = (text) => {
+    return {
+        type: CHANGE_TEXT,
+        text: text
     }
 };
 

@@ -7,11 +7,11 @@ import reducer from './reducers'
 
 const rootEl = document.getElementById('root');
 
-const store = createStore(reducer)
+const store = createStore(reducer);
 
 render(
     <Provider store={store}>
         <App />
     </Provider>,
     rootEl
-)
+);

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import knightPosition from './Game'
+import {knightPosition, positionText} from './Game'
 
 const reducer = combineReducers({
-    knightPosition
+    knightPosition, positionText
 });
 
 export default reducer

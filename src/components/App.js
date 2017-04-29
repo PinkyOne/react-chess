@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Board from '../containers/Board'
 import XStripe from "./XStripe";
 import YStripe from "./YStripe";
+import ControlPanel from "../containers/ControlPanel";
 
 export default class App extends Component {
     render() {
@@ -42,7 +43,7 @@ export default class App extends Component {
                     width: '20%',
                     height: '100%'
                 }}>
-
+                    <ControlPanel/>
                 </div>
             </div>
         );
