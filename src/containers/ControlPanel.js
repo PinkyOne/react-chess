@@ -7,6 +7,12 @@ import {moveKnight, changeText} from "../actions";
 import {LETTERS} from '../Constants'
 
 class ControlPanel extends Component {
+    static checkPositionText(positionText) {
+        const y = LETTERS.indexOf(positionText[0].toUpperCase());
+        const x = parseInt(positionText[1], 10) - 1;
+        return y > 0 && x > 0 && x <= 8;
+    }
+
     canMoveKnight(toX, toY) {
         const {x, y} = this.props.knightPosition;
         const dx = toX - x;
@@ -31,12 +37,6 @@ class ControlPanel extends Component {
             return false;
         }
         this.props.moveKnight(newX, newY);
-    }
-
-    static checkPositionText(positionText) {
-        const y = LETTERS.indexOf(positionText[0].toUpperCase());
-        const x = parseInt(positionText[1], 10) - 1;
-        return y > 0 && x > 0 && x <= 8;
     }
 
     onChangeTextField(event) {
