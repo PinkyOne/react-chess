@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {connect} from "react-redux";
@@ -68,9 +69,7 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-    knightPosition: PropTypes.arrayOf(
-        PropTypes.number.isRequired
-    ).isRequired,
+    knightPosition: PropTypes.object.isRequired,
     moveKnight: PropTypes.func.isRequired
 };
 

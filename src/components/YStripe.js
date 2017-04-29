@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import StripeSquare from "./StripeSquare";
 
 export default class YStripe extends Component {
-    renderSquare(i) {
-        let percents = 100/8;
-        percents = percents.toString()+'%';
+    static renderSquare(i) {
+        let percents = 100 / 8;
+        percents = percents.toString() + '%';
         return (
             <div key={i}
                  style={{width: '100%', height: percents}}>
@@ -20,14 +20,14 @@ export default class YStripe extends Component {
         const stripe = [];
         const letters = 'ABCDEFGH';
         for (let i = 0; i < size; i++) {
-            stripe.push(this.renderSquare(letters[i]));
+            stripe.push(YStripe.renderSquare(letters[i]));
         }
         return (
             <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 position: 'relative',
-                flexDirection:'column',
+                flexDirection: 'column',
                 width: '11.11111%',
                 height: '100%'
             }}>

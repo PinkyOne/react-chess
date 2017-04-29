@@ -1,4 +1,4 @@
-import {MOVE_KNIGHT,CHANGE_TEXT} from '../Constants'
+import {MOVE_KNIGHT, CHANGE_TEXT} from '../Constants'
 
 export const moveKnight = (x, y) => {
     return {

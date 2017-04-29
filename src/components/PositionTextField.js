@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import moveKnight from '../actions'
-import {changeText} from "../actions/index";
+import {changeText} from "../actions";
 
 class PositionTextField extends Component {
     onChangeTextField(event) {
@@ -11,21 +10,13 @@ class PositionTextField extends Component {
         this.props.changeText(value);
     }
 
-    getPositionText(position) {
-        if (!position)return '';
-        const {x, y} = position;
-        const letters = 'ABCDEFGH';
-        return letters[y] + (x + 1);
-    }
-
     render() {
         return (
             <div>
                 <input
                     type="text"
-                    value={this.props.positionText.text}
+                    value={this.props.knightPosition.text}
                     onChange={this.onChangeTextField.bind(this)}
-                    ref="positionTextField"
                 />
             </div>
         );
@@ -38,6 +29,5 @@ PositionTextField.propsTypes = {
     knightPosition: PropTypes.arrayOf(
         PropTypes.number.isRequired
     ).isRequired,
-    positionText: PropTypes.string,
     changeText: PropTypes.func.isRequired
 };

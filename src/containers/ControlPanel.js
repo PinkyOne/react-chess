@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Button from "../components/Button";
 import PositionTextField from "../components/PositionTextField";
@@ -15,18 +15,12 @@ class ControlPanel extends Component {
             (Math.abs(dx) === 1 && Math.abs(dy) === 2);
     }
 
-    getPositionText(position) {
-        const {x, y} = position;
-        const letters = 'ABCDEFGH';
-        return letters[y] + x;
-    }
-
     setTextField(text) {
         this.setState({positionText: text});
     }
 
     setKnightPosition() {
-        const positionText = this.props.positionText.text;
+        const positionText = this.props.knightPosition.text;
         if (!positionText)return;
         const letters = 'ABCDEFGH';
         const y = letters.indexOf(positionText[0]);
@@ -42,9 +36,7 @@ class ControlPanel extends Component {
     render() {
         return (
             <div>
-                <PositionTextField
-                    knightPosition={this.props.knightPosition}
-                />
+                <PositionTextField />
                 <Button handleChange={this.setKnightPosition.bind(this)}/>
             </div>
         );
@@ -55,11 +47,8 @@ class ControlPanel extends Component {
 const mapStateToProps = state => state;
 
 ControlPanel.propTypes = {
-    knightPosition: PropTypes.arrayOf(
-        PropTypes.number.isRequired
-    ).isRequired,
-    moveKnight: PropTypes.func.isRequired,
-    positionText: PropTypes.string.isRequired
+    knightPosition: PropTypes.object.isRequired,
+    moveKnight: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, {moveKnight})(ControlPanel);

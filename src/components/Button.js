@@ -16,4 +16,4 @@ export default class Button extends Component {
 
 Button.propTypes = {
     handleChange: PropTypes.func.isRequired
-}
+};
