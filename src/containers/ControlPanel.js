@@ -38,7 +38,9 @@ class ControlPanel extends Component {
     render() {
         return (
             <div>
-                <PositionTextField onChange={this.onChangeTextField.bind(this)}/>
+                <PositionTextField
+                    knightPosition={this.props.knightPosition}
+                    onChange={this.onChangeTextField.bind(this)}/>
                 <Button handleChange={this.setKnightPosition.bind(this)}/>
             </div>
         );

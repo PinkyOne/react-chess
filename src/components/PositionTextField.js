@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 
-function PositionTextField(props) {
+export default function PositionTextField(props) {
     return (
         <div>
             <input
@@ -13,8 +12,6 @@ function PositionTextField(props) {
         </div>
     );
 }
-
-export default connect(state => state)(PositionTextField);
 
 PositionTextField.propsTypes = {
     knightPosition: PropTypes.arrayOf(
