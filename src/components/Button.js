@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 
 export default function Button(props) {
     return (
-        <div>
-            <input type="button"
-                   name="Ok"
-                   onClick={props.handleChange}
-            />
-        </div>
+        <input type="button"
+               value="Move"
+               onClick={props.handleChange}
+        />
     );
 }
 

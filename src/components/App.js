@@ -38,9 +38,12 @@ export default function App(props) {
                 display: 'flex',
                 flexWrap: 'no-wrap',
                 flexDirection: 'column',
+                justifyContent:'center',
+                alignContent:'center',
                 position: 'relative',
                 width: '20%',
-                height: '100%'
+                height: '100%',
+                background:'#0066ff'
             }}>
                 <ControlPanel/>
             </div>

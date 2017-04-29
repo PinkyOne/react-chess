@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 export default function PositionTextField(props) {
     return (
-        <div>
-            <input
-                type="text"
-                value={props.knightPosition.text}
-                onChange={props.onChange}
-            />
-        </div>
+        <input
+            type="text"
+            size="10"
+            value={props.knightPosition.text}
+            onChange={props.onChange}
+        />
     );
 }
 
