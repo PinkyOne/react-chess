@@ -7,15 +7,16 @@ import { AppContainer } from 'react-hot-loader';
 import App from './components/App';
 import reducer from './reducers'
 
+const store = createStore(reducer);
+const rootEl = document.getElementById('root');
 const render = (Component) => {
-  const store = createStore(reducer);
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <Component />
+        <Component />      
       </Provider>
     </AppContainer>,
-    document.getElementById('root')
+    rootEl
   );
 };
 
@@ -24,6 +25,7 @@ render(App);
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./components/App', () => {
-    render(App)
+    const NextApp = require('./components/App').default;
+    render(NextApp);
   });
 }
