@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const buildPath = path.resolve(__dirname, './build');
+
+const buildPath = path.resolve(__dirname, './dist');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
 
@@ -16,16 +17,16 @@ module.exports = {
     // bundle the client for hot reloading
     // only- means to only hot reload for successful updates
 
-    './index.jsx'
+    './index.jsx',
     // the entry point of our app
   ],
   output: {
     filename: 'bundle.js',
     // the output bundle
 
-    path: path.resolve(__dirname, 'dist'),
+    path: buildPath,
 
-    publicPath: '/'
+    publicPath: '/',
     // necessary for HMR to know where to load the hot update chunks
   },
 
@@ -35,10 +36,10 @@ module.exports = {
     hot: true,
     // enable HMR on the server
 
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: buildPath,
     // match the output path
 
-    publicPath: '/'
+    publicPath: '/',
     // match the output `publicPath`
   },
   module: {
@@ -48,13 +49,18 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets:[ 'es2015', 'react', 'stage-2' ]
-        }
+          presets: ['es2015', 'react', 'stage-2'],
+        },
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
     ],
   },
 
