@@ -3,54 +3,18 @@ import Board from '../containers/Board';
 import XStripe from './XStripe';
 import YStripe from './YStripe';
 import ControlPanel from '../containers/ControlPanel';
+import styles from './styles/App.css';
 
 const App = () =>
-  <div
-    style={{
-      display: 'flex',
-      flexWrap: 'no-wrap',
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-    }}
-  >
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'no-wrap',
-        flexDirection: 'column',
-        position: 'relative',
-        width: '80%',
-        height: '100%',
-      }}
-    >
+  <div className={styles.AppRoot}>
+    <div className={styles.AppBoard}>
       <XStripe />
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'no-wrap',
-          position: 'relative',
-          width: '100%',
-          height: '88.88888%',
-        }}
-      >
+      <div className={styles.AppBoardBottom}>
         <YStripe />
         <Board />
       </div>
     </div>
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'no-wrap',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignContent: 'center',
-        position: 'relative',
-        width: '20%',
-        height: '100%',
-        background: '#0066ff',
-      }}
-    >
+    <div className={styles.AppControlPanel}>
       <ControlPanel />
     </div>
   </div>;
