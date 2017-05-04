@@ -42,6 +42,9 @@ module.exports = {
     publicPath: '/',
     // match the output `publicPath`
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
@@ -49,7 +52,11 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-2'],
+          plugins: [
+            'react-hot-loader/babel',
+            'transform-decorators-legacy',
+          ],
+          presets: [['es2015', { modules: false }], 'react', 'stage-2'],
         },
       },
       {
@@ -57,7 +64,7 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
