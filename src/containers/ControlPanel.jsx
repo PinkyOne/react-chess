@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import PositionTextField from '../components/PositionTextField';
 import { moveKnight, changeText } from '../actions';
 import { LETTERS } from '../constants/Strings';
+import { canMoveKnight } from './helpers/MoveHelper';
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = { moveKnight, changeText };
@@ -32,26 +33,20 @@ class ControlPanel extends Component {
       alert('Wrong position');
       return false;
     }
-    const newY = LETTERS.indexOf(positionText[0].toUpperCase());
-    const newX = parseInt(positionText[1], 10) - 1;
-    if (!this.canMoveKnight(newX, newY)) {
+    const toY = LETTERS.indexOf(positionText[0].toUpperCase());
+    const toX = parseInt(positionText[1], 10) - 1;
+
+    const newPosition = { toX, toY };
+
+    if (!canMoveKnight(this.props.knightPosition, newPosition)) {
       const { x, y } = this.props.knightPosition;
-      if (newX !== x || newY !== y) {
+      if (toX !== x || toY !== y) {
         alert('Knight move must be like a L');
       }
       return false;
     }
-    this.props.moveKnight(newX, newY);
+    this.props.moveKnight(toX, toY);
     return false;
-  }
-
-  canMoveKnight(toX, toY) {
-    const { x, y } = this.props.knightPosition;
-    const dx = toX - x;
-    const dy = toY - y;
-
-    return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-      (Math.abs(dx) === 1 && Math.abs(dy) === 2);
   }
 
   render() {

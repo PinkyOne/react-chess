@@ -8,6 +8,7 @@ import { autobind } from 'core-decorators';
 import BoardSquare from './BoardSquare';
 import Knight from './Knight';
 import { moveKnight } from '../actions';
+import moveHelper from './helpers/MoveHelper';
 
 import styles from './styles/Board.css';
 
@@ -27,14 +28,8 @@ class Board extends Component {
 
   @autobind
   canMoveKnight(toX, toY) {
-    const { x, y } = this.props.knightPosition;
-    const dx = toX - x;
-    const dy = toY - y;
-
-    return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-      (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+    return moveHelper(this.props.knightPosition, { toX, toY });
   }
-
 
   renderSquare(i) {
     const x = i % 8;
