@@ -1,0 +1,29 @@
+.Stripe {
+  display: flex;
+  flex-wrap: no-wrap;
+  position: relative;
+  width: 100%;
+  height: 11.11111%;
+}
+
+
+.VerticalStripe {
+  composes: Stripe;
+  flex-direction: column;
+  width: 11.11111%;
+  height: 100%;
+}
+
+.HorizontalStripe {
+  composes: Stripe;
+}
+
+.VerticalSquare {
+  width: 100%;
+  height: 12.5%;
+}
+
+.HorizontalSquare {
+  width: 11.1111%;
+  height: 100%;
+}

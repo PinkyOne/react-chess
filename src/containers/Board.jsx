@@ -9,6 +9,8 @@ import BoardSquare from './BoardSquare';
 import Knight from './Knight';
 import { moveKnight } from '../actions';
 
+import styles from './styles/Board.css';
+
 const mapStateToProps = state => state;
 const mapDispatchToProps = { moveKnight };
 
@@ -40,7 +42,7 @@ class Board extends Component {
     return (
       <div
         key={i}
-        style={{ width: '12.5%', height: '12.5%' }}
+        className={styles.Square}
       >
         <BoardSquare
           canMoveKnight={this.canMoveKnight}
@@ -69,16 +71,7 @@ class Board extends Component {
       squares.push(this.renderSquare(i));
     }
 
-    return (<div
-      style={{
-        width: '88.88888%',
-        height: '100%',
-        display: 'flex',
-        flexWrap: 'wrap',
-        position: 'relative',
-      }}
-    > { squares }
-    </div>);
+    return (<div className={styles.Board}> { squares } </div>);
   }
 }
 

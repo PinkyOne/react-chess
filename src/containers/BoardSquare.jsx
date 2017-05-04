@@ -4,6 +4,10 @@ import { DropTarget } from 'react-dnd';
 import Square from '../components/Square';
 import ItemTypes from '../constants/ItemTypes';
 
+import styles, { BoardSquareOverlayGreen,
+  BoardSquareOverlayRed,
+  BoardSquareOverlayYellow } from './styles/BoardSquare.css';
+
 const squareTarget = {
   canDrop(props) {
     const { canMoveKnight, x, y } = props;
@@ -27,18 +31,7 @@ function collect(connect, monitor) {
 @DropTarget(ItemTypes.KNIGHT, squareTarget, collect)
 class BoardSquare extends Component {
   static renderOverlay(color) {
-    return (<div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '100%',
-        zIndex: 1,
-        opacity: 0.5,
-        backgroundColor: color,
-      }}
-    />);
+    return (<div className={color} />);
   }
 
   render() {
@@ -46,19 +39,13 @@ class BoardSquare extends Component {
     const black = (x + y) % 2 === 1;
 
     return connectDropTarget(
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-        }}
-      >
+      <div className={styles.BoardSquare}>
         <Square black={black}>
           {this.props.children}
         </Square>
-        { isOver && !canDrop && BoardSquare.renderOverlay('red') }
-        {!isOver && canDrop && BoardSquare.renderOverlay('yellow') }
-        { isOver && canDrop && BoardSquare.renderOverlay('green') }
+        { isOver && !canDrop && BoardSquare.renderOverlay(BoardSquareOverlayRed) }
+        {!isOver && canDrop && BoardSquare.renderOverlay(BoardSquareOverlayYellow) }
+        { isOver && canDrop && BoardSquare.renderOverlay(BoardSquareOverlayGreen) }
       </div>);
   }
 }

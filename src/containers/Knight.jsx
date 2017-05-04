@@ -5,6 +5,8 @@ import { DragSource } from 'react-dnd';
 import ItemTypes from '../constants/ItemTypes';
 import { IMG_URL } from '../constants/Strings';
 
+import styles from './styles/Knight.css';
+
 const knightSource = {
   beginDrag() {
     return {};
@@ -29,15 +31,10 @@ class Knight extends Component {
 
   render() {
     const { connectDragSource, isDragging } = this.props;
-    return connectDragSource(<div
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        fontSize: 25,
-        fontWeight: 'bold',
-        cursor: 'move',
-      }}
-    > ♘
-    </div>);
+    return connectDragSource(
+      <div className={isDragging ? styles.DraggingKnight : styles.Knight}>
+        ♘
+      </div>);
   }
 }
 

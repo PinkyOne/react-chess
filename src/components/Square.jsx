@@ -1,18 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BlackSquare, WhiteSquare } from './styles/Square.css';
 
 export default function Square(props) {
-  const black = props.black;
-  const fill = black ? 'black' : 'white';
-  const stroke = black ? 'white' : 'black';
   return (
     <div
-      style={{
-        backgroundColor: fill,
-        color: stroke,
-        width: '100%',
-        height: '100%',
-      }}
+      className={props.black ? BlackSquare : WhiteSquare}
     > { props.children }</div>);
 }
 

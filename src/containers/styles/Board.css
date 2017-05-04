@@ -1,0 +1,12 @@
+.Board{
+  width: 88.88888%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.Square {
+  width: 12.5%;
+  height: 12.5%;
+}

@@ -1,0 +1,11 @@
+.Knight {
+  opacity: 1;
+  fontSize: 25
+  fontWeight: bold;
+  cursor: move;
+}
+
+.DraggingKnight {
+  composes: Knight;
+  opacity: 0.5;
+}
