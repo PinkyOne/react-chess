@@ -8,7 +8,7 @@ import { autobind } from 'core-decorators';
 import BoardSquare from './BoardSquare';
 import Knight from './Knight';
 import { moveKnight } from '../actions';
-import moveHelper from '../helpers/MoveHelper';
+import moveHelper from './helpers/MoveHelper';
 
 import styles from './styles/Board.css';
 

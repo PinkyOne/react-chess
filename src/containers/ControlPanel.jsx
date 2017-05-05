@@ -7,15 +7,9 @@ import Button from '../components/Button';
 import PositionTextField from '../components/PositionTextField';
 import { moveKnight, changeText } from '../actions';
 import { LETTERS } from '../constants/Strings';
-import { canMoveKnight } from '../helpers/MoveHelper';
-import { getPositionText } from '../selectors';
+import { canMoveKnight } from './helpers/MoveHelper';
 
-const mapStateToProps = (state) => {
-  const { x, y } = state.knightPosition;
-  const text = getPositionText(state.knightPosition);
-
-  return { knightPosition: { x, y, text } };
-};
+const mapStateToProps = state => state;
 const mapDispatchToProps = { moveKnight, changeText };
 
 @connect(mapStateToProps, mapDispatchToProps)
