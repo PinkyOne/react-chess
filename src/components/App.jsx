@@ -4,6 +4,7 @@ import XStripe from './XStripe';
 import YStripe from './YStripe';
 import ControlPanel from '../containers/ControlPanel';
 import styles from './styles/App.css';
+import SandwichShop from '../containers/SandwichShop';
 
 const App = () =>
   <div className={styles.AppRoot}>
@@ -17,6 +18,7 @@ const App = () =>
     <div className={styles.AppControlPanel}>
       <ControlPanel />
     </div>
+    <SandwichShop />
   </div>;
 
 export default App;

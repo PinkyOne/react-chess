@@ -50,6 +50,7 @@ class ControlPanel extends Component {
   }
 
   render() {
+    const buttonValue = 'Move';
     return (
       <div>
         <PositionTextField
@@ -57,7 +58,8 @@ class ControlPanel extends Component {
           onChange={this.onChangeTextField}
         />
         <Button
-          handleChange={this.setKnightPosition}
+          value={buttonValue}
+          handleClick={this.setKnightPosition}
         />
       </div>
     );

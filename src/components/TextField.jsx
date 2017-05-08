@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Button(props) {
+export default function TextField(props) {
   return (
     <input
-      type="button"
+      type="text"
+      size="30"
       value={props.value}
-      onClick={props.handleClick}
+      onChange={props.onChange}
     />
   );
 }
 
-Button.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+TextField.propsTypes = {
   value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
