@@ -1,0 +1,6 @@
+.SandwichShop {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    position: relative;
+}

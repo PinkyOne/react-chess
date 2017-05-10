@@ -5,8 +5,10 @@ import { autobind } from 'core-decorators';
 
 import Button from '../components/Button';
 import { changeName, makeASandwichWithSecretSauce } from '../actions';
-import TextField from '../components/TextField';
-import Sandwich from '../components/Sandwich';
+import TextField from '../components/sandwichShop/TextField';
+import Sandwich from '../components/sandwichShop/Sandwich';
+import SandwichShopSign from '../components/sandwichShop/SandwichShopSign';
+import styles from './styles/SandwichShop.css';
 
 const mapStateToProps = state => ({
   name: state.sandwich.name,
@@ -31,7 +33,8 @@ class SandwichShop extends Component {
   render() {
     const buttonValue = 'Make sandwich';
     return (
-      <div>
+      <div className={styles.SandwichShop}>
+        <SandwichShopSign />
         <TextField
           value={this.props.name}
           onChange={this.onChangeNameTextField}

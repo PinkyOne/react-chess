@@ -17,8 +17,8 @@ const App = () =>
     </div>
     <div className={styles.AppControlPanel}>
       <ControlPanel />
+      <SandwichShop />
     </div>
-    <SandwichShop />
   </div>;
 
 export default App;

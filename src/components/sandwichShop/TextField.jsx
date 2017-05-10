@@ -5,7 +5,6 @@ export default function TextField(props) {
   return (
     <input
       type="text"
-      size="30"
       value={props.value}
       onChange={props.onChange}
     />
