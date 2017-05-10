@@ -29,7 +29,7 @@ export const apologize = (toPerson, error) => ({
 });
 
 function fetchSecretSauce() {
-  return fetch('https://github.com/gaearon/redux-thunk');
+  return fetch('https://api.github.com');
 }
 
 export function makeASandwichWithSecretSauce(forPerson) {
